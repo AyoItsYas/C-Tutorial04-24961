@@ -1,0 +1,135 @@
+Questions,
+    1) What is wrong with the  following if statement (there are at  least 3 errors). The Indentation
+    indicates the desired behavior.
+
+        if numNeighbors >= 3 || numNeighbors = 4
+            ++numNeighbors;
+            printf("You are dead! \n " );
+        else
+            --numNeighbors;
+
+    2) Describe the output produced by this poorly indented program segment:
+
+        int number = 4;
+        double alpha = -1.0;
+        if (number > 0)
+        if (alpha > 0)
+            printf("Here I am! \n" );
+        else
+            printf("No, I’m here! \n");
+            printf(“No, actually, I’m here! \n");
+
+    3)  Consider the following if statement, where doesSignificantWork, makesBreakthrough,
+    and nobelPrizeCandidate are all boolean variables:
+
+        if (doesSignificantWork) {
+        if (makesBreakthrough)
+        nobelPrizeCandidate = true;
+        else
+        nobelPrizeCandidate = false;
+        }
+        else if (!doesSignificantWork)
+        nobelPrizeCandidate = false;
+
+    4)  Write if statements to do the following:
+        – If character variable taxCode is ’T’, increase price by adding the taxRate percentage of price to it.
+        – If integer variable opCode has the value 1, read in double values for X and Y and calculate and print
+        their sum.
+        – If integer variable currentNumber is odd, change its value so that it is now 3 times currentNumber
+        plus  1,  otherwise  change  its  value  so  that  it  is  now  half  of  currentNumber  (rounded  down  when
+        currentNumber is odd).
+        – Assign true to the boolean variable leapYear if the integer variable year is a leap year. (A leap year is
+        a multiple of 4, and if it is a multiple of 100, it must also be a multiple of 400.)
+        – Assign a value to double variable cost depending on the value of integer variable distance as follows:
+
+        Distance          Cost
+        -----------------------------------   ----------
+        0 through 100     5.00
+        More than 100 but not more than 500  8.00
+        More than 500 but less than 1,000  10.00
+        1,000 or more     12.00
+
+Answers,
+    1)
+        question-1-testing.c:1:1: error: expected identifier or ‘(’ before ‘if’
+            1 | if numNeighbors >= 3 || numNeighbors = 4
+            | ^~
+        question-1-testing.c:3:8: error: expected declaration specifiers or ‘...’ before string constant
+            3 | printf("You are dead! \n " );
+            |        ^~~~~~~~~~~~~~~~~~~
+        question-1-testing.c:4:1: error: expected identifier or ‘(’ before ‘else’
+            4 | else
+            | ^~~~
+
+        1. The if statement is missing the parenthesis around the condition.
+        2. The conditional is using the assignment operator instead of the equality operator.
+        3. The else statement is missing the curly braces.
+
+    2)
+        question-2-testing.c:3:1: error: expected identifier or ‘(’ before ‘if’
+            3 | if (number > 0)
+            | ^~
+        question-2-testing.c:6:1: error: expected identifier or ‘(’ before ‘else’
+            6 | else
+            | ^~~~
+        question-2-testing.c:8:8: error: stray ‘\342’ in program
+            8 | printf(“No, actually, I’m here! \n");
+            |        ^
+        question-2-testing.c:8:24: error: stray ‘\342’ in program
+            8 | printf(“No, actually, I’m here! \n");
+            |                        ^
+        question-2-testing.c:8:24: error: expected ‘)’ before ‘m’
+            8 | printf(“No, actually, I’m here! \n");
+            |                        ^~
+            |                        )
+        question-2-testing.c:8:33: error: stray ‘\’ in program
+            8 | printf(“No, actually, I’m here! \n");
+            |                                 ^
+        question-2-testing.c:8:35: warning: missing terminating " character
+            8 | printf(“No, actually, I’m here! \n");
+            |                                   ^
+        question-2-testing.c:8:35: error: missing terminating " character
+            8 | printf(“No, actually, I’m here! \n");
+
+        1. The if statement is missing the curly braces.
+        2. The else statement is missing the curly braces.
+        3. The printf statement is using the wrong quotation marks.
+
+    3)
+        Question is unclear, missing information/context/gramatical errors.
+
+    4)
+        a)
+            if (taxCode == 'T') {
+                price += price * taxRate;
+            }
+
+        b)
+            if (opCode == 1) {
+                double x, y;
+                scanf("%lf %lf", &x, &y);
+                printf("Sum: %lf\n", x + y);
+            }
+
+        c)
+            if (currentNumber % 2 == 1) {
+                currentNumber = 3 * currentNumber + 1;
+            } else {
+                currentNumber /= 2;
+            }
+
+        d)
+            if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+                leapYear = true;
+            }
+
+        e)
+            if (distance <= 100) {
+                cost = 5.00;
+            } else if (distance <= 500) {
+                cost = 8.00;
+            } else if (distance < 1000) {
+                cost = 10.00;
+            } else {
+                cost = 12.00;
+            }
